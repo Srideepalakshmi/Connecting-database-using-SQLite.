@@ -1,0 +1,84 @@
+<!-- templates/product_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        h1, h2, h3, h4 {
+            text-align: center;
+        }
+        table {
+            width: 60%;
+            margin-top: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kamaraj College of Engineering and Technology</h1>
+    <h2>Web Applications using Django Framework</h2>
+    <h3>SRIDEEPALAKSHMI III-IT[A]</h3> <!-- Updated as per your request -->
+    <h4>Connecting Database using SQLite</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Name of the Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Actions</th> <!-- Added a new column for Action buttons -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <!-- Action buttons: Update and Delete for each product -->
+                    <a href="{% url 'product_update' product.pk %}">
+                        <button type="button">UPDATE</button>
+                    </a>
+                    <a href="{% url 'product_delete' product.pk %}">
+                        <button type="button">DELETE</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Centered buttons below the table -->
+    <div class="button-container">
+        <a href="{% url 'product_create' %}">
+            <button type="button">INSERT</button>
+        </a>
+    </div>
+</body>
+</html>

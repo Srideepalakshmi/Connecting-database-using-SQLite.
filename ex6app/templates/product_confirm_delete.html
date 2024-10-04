@@ -1,0 +1,27 @@
+<!-- templates/product_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kamaraj College of Engineering and Technology</h1>
+    <h2>Web Applications using Django Framework</h2>
+    <h3>SRIDEEPALAKSHMI III-IT[A]</h3> <!-- Updated as per your request -->
+    <h4>Connecting Database using SQLite</h4>
+    <h2>Delete Record</h2>
+    <h2>Are you sure you want to delete the product: {{ product.name }}?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">DELETE</button>
+        <button type="button" onclick="window.location.href='{% url 'product_list' %}'">CANCEL</button>
+</form>
+</body>
+</html>

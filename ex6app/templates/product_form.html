@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+
+    <style>
+        .form-container {
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: left;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kamaraj College of Engineering and Technology</h1>
+    <h2>Web Applications using Django Framework</h2>
+    <h3>SRIDEEPALAKSHMI III-IT[A]</h3> 
+    <h4>Connecting Database using SQLite</h4>
+
+    <div class="form-container">
+        {% if form.instance.pk %}
+            <h2>Update Record</h2> <!-- If updating an existing record -->
+        {% else %}
+            <h2>Create Record</h2> <!-- If creating a new record -->
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            {% if form.instance.pk %}
+                <button type="submit">UPDATE</button> <!-- Update button for existing record -->
+            {% else %}
+                <button type="submit">INSERT</button> <!-- Insert button for new record -->
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
